@@ -12,12 +12,13 @@
             gap: 20px;
             margin-top: 20px;
         }
+        /* Style for the individual lore boxes to contrast against white */
         .lore-block {
-            background: var(--card-bg);
+            background: var(--bg-pastel-blue); /* Soft blue/mint canvas */
             border: 3px solid var(--accent-pop);
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 4px 4px 0px var(--bg-pastel-blue);
+            box-shadow: 4px 4px 0px var(--lavender);
         }
         .lore-block h3 {
             color: var(--accent-pop);
@@ -25,7 +26,7 @@
             font-size: 1.8rem;
         }
         .lore-highlight {
-            background: var(--lavender);
+            background: var(--bg-pastel-pink); /* Pink accent only for the quote */
             text-align: center;
             padding: 15px;
             font-style: italic;
@@ -50,7 +51,7 @@
     </nav>
 
     <main>
-        <section class="container-box" style="background: var(--bg-pastel-pink);">
+        <section class="container-box" style="background: #FFFFFF;">
             <h2>The Legends of the Deep 🌊</h2>
             <p>Step into a world where your love for aquatic life has the power to heal an entire ocean ecosystem. Here is the backstory of the world you will be saving:</p>
 
@@ -65,7 +66,7 @@
                     "When the last coral loses its glow, the sea will fall into a deep sleep..."
                 </div>
 
-                <div class="lore-block">
+                <div class="lore-block" style="background: var(--lavender); box-shadow: 4px 4px 0px var(--bg-pastel-blue);">
                     <h3>The Coral Sanctuary 🌸</h3>
                     <p>Perched on the edge of the cove sits an abandoned marine observatory. Equipped with specialized, cozy healing tanks, this laboratory serves as a safe haven. Inside, protected from the rough, polluted waters of the open sea, sick sea creatures can safely recuperate under your watchful eye.</p>
                 </div>
