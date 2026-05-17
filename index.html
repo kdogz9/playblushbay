@@ -3,10 +3,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub Page</title>
+    <title>AquaHeal: Cozy Aquarium Management Sim</title>
+    <style>
+        /* --- Girly Pop & Cozy Theme Colors --- */
+        :root {
+            --bubblegum-pink: #FFC6FF;
+            --soft-lavender: #E8AEFF;
+            --mint-green: #CAFFBF;
+            --ocean-blue: #9BF6FF;
+            --pastel-yellow: #FDFFB6;
+            --cozy-dark: #4A3E4D;
+            --white: #FFFFFF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Fredoka', 'Nunito', 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background-color: #FFF0F5; /* Lavender blush background */
+            color: var(--cozy-dark);
+            line-height: 1.6;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: linear-gradient(135deg, var(--bubblegum-pink), var(--ocean-blue));
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 8px dashed var(--white);
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            color: var(--white);
+            text-shadow: 3px 3px 0px var(--cozy-dark);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            background-color: var(--white);
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 50px;
+            box-shadow: 0 4px 0px var(--soft-lavender);
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* --- Steam Wishlist Button --- */
+        .btn-steam {
+            display: inline-block;
+            background-color: #171a21; /* Steam Dark Gray */
+            color: var(--white);
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 6px 0px var(--cozy-dark);
+            transition: all 0.2s ease;
+            border: 3px solid var(--white);
+        }
+
+        .btn-steam:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 9px 0px var(--cozy-dark);
+            background-color: #2a475e; /* Steam Blue */
+        }
+
+        /* --- Main Content Layout --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* --- Countdown Timer --- */
+        .countdown-box {
+            background-color: var(--pastel-yellow);
+            border: 4px dashed var(--soft-lavender);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* --- About & Game Features --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: ' ✨';
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 0px rgba(232, 174, 255, 0.3);
+            border: 2px solid var(--soft-lavender);
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            color: var(--cozy-dark);
+        }
+
+        /* --- Media Placeholder (For your Isometric Screenshots) --- */
+        .media-showcase {
+            background-color: var(--white);
+            border: 4px solid var(--ocean-blue);
+            border-radius: 24px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 0px var(--ocean-blue);
+        }
+
+        .screenshot-placeholder {
+            background: #f0f0f0;
+            border: 3px dashed #ccc;
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+
+        /* --- Newsletter Form --- */
+        .newsletter {
+            background-color: var(--mint-green);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            border: 3px solid var(--white);
+            box-shadow: 0 8px 0px rgba(0,0,0,0.05);
+        }
+
+        .newsletter input[type="email"] {
+            padding: 12px 20px;
+            font-size: 1rem;
+            border: 2px solid var(--soft-lavender);
+            border-radius: 50px;
+            width: 60%;
+            max-width: 400px;
+            margin-right: 10px;
+            outline: none;
+        }
+
+        .newsletter button {
+            padding: 12px 28px;
+            font-size: 1rem;
+            background-color: var(--soft-lavender);
+            color: var(--cozy-dark);
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0px #c38be0;
+        }
+
+        .newsletter button:hover {
+            background-color: #df9bff;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #888;
+        }
+    </style>
+    <!-- Google Fonts for that bubbly/cozy aesthetic -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p>My website is officially live on GitHub Pages.</p>
+
+    <!-- HERO SECTION -->
+    <header>
+        <!-- Replace with your logo later! -->
+        <h1 class="hero-title">🐟 AquaHeal Sim 🫧</h1>
+        <p class="hero-subtitle">The Coziest Isometric Aquarium Rescue Management Game!</p>
+        <br><br>
+        <a href="#" class="btn-steam">🌟 Wishlist on Steam 🌟</a>
+    </header>
+
+    <div class="container">
+
+        <!-- COUNTDOWN TO MAY 2027 -->
+        <div class="countdown-box">
+            🌊 Coming to Steam in May 2027! Keep an eye on the horizons! 🌊
+        </div>
+
+        <!-- SCREENSHOT SHOWCASE -->
+        <h2 class="section-title">Peek Into the Aquarium</h2>
+        <div class="media-showcase">
+            <!-- Once you have pixel art screenshots, replace this div with an <img> tag -->
+            <div class="screenshot-placeholder">
+                [ Beautiful Isometric Pixel Art Screenshot Goes Here! ]
+            </div>
+        </div>
+
+        <!-- GAME FEATURES -->
+        <h2 class="section-title">Game Features</h2>
+        <div class="grid">
+            <div class="card">
+                <div class="card-icon">🩺</div>
+                <h3>Rescue & Heal</h3>
+                <p>Take in sick, injured, or sad ocean critters. Diagnose their ailments, feed them treat-filled meals, and nurse them back to perfect health!</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🌊</div>
+                <h3>Restore the Ocean</h3>
+                <p>Once your fish are thriving, release them back into the wild to breathe life, color, and joy back into a fading coral reef ecosystem.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>Girly-Pop Decoration</h3>
+                <p>Earn donations from delighted visitors and spend them at the shop! Buy adorable pink corals, glowing neon rocks, and cute isometric decor to make your dream aquarium.</p>
+            </div>
+        </div>
+
+        <!-- NEWSLETTER / DEVLOG SIGN UP -->
+        <div class="newsletter">
+            <h2>Join the Devlog Community 💕</h2>
+            <p style="margin-bottom: 20px;">Want exclusive pixel art sneak peeks and notification when our Steam demo drops?</p>
+            <form onsubmit="alert('Thank you for subscribing! ✨'); return false;">
+                <input type="email" placeholder="your.email@cozy.com" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 Your Studio Name. All rights reserved.</p>
+        <p>Made with love & bubbles 🫧</p>
+    </footer>
+
 </body>
 </html>
