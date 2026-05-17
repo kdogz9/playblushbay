@@ -1,70 +1,153 @@
+/* ==========================================================================
+   COZY PASTEL PIXEL ART STYLESHEET
+   ========================================================================== */
+
+/* Import a cute, crisp pixel-style font */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Quicksand:wght@500;700&display=swap');
+
 :root {
-
-.three-card-grid {
-  grid-template-columns: repeat(3, 1fr);
+    --bg-pastel-pink: #FFE5EC;
+    --bg-pastel-blue: #E8F0FE;
+    --mint-green: #D8F3DC;
+    --lavender: #F0E6FF;
+    --text-color: #4A3E4D;
+    --accent-pop: #FF8FAB;
+    --card-bg: #FFFFFF;
 }
 
-.pixel-sticker,
-.small-card {
-  background: var(--white);
-  border: 4px solid var(--ink);
-  box-shadow: 6px 6px 0 var(--shadow);
-  padding: 22px;
-  text-align: center;
-  font-weight: 900;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.page-title {
-  margin-bottom: 34px;
+body {
+    background-color: var(--bg-pastel-pink);
+    color: var(--text-color);
+    font-family: 'Quicksand', sans-serif;
+    line-height: 1.6;
+    padding-bottom: 60px;
 }
 
-.story-card,
-.devlog-list {
-  margin-top: 34px;
+/* CRISP PIXEL ART ONLY - Prevents browser smoothing/blurring */
+img, .pixel-art {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
 }
 
-.devlog-list {
-  display: grid;
-  gap: 24px;
+/* Header & Pixel Typography */
+header {
+    background-color: var(--lavender);
+    text-align: center;
+    padding: 2rem;
+    border-bottom: 4px solid var(--accent-pop);
 }
 
-.devlog-date {
-  display: inline-block;
-  font-weight: 900;
-  background: var(--lilac);
-  border: 3px solid var(--ink);
-  padding: 6px 10px;
-  box-shadow: 3px 3px 0 var(--shadow);
+h1, h2, h3, .pixel-font {
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
 }
 
-.small-image-placeholder {
-  min-height: 180px;
-  margin-top: 20px;
-  width: 100%;
+h1 {
+    font-size: 3.5rem;
+    color: var(--accent-pop);
+    text-shadow: 2px 2px 0px #FFF;
 }
 
-.footer {
-  background: var(--cream);
-  border-top: var(--pixel-border);
-  text-align: center;
-  padding: 26px 20px;
-  font-weight: 900;
+h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
 }
 
-@media (max-width: 850px) {
-  .hero-layout,
-  .split-layout,
-  .three-card-grid,
-  .sticker-row {
-    grid-template-columns: 1fr;
-  }
+/* Girly Pop Navigation Bar */
+nav {
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    border-bottom: 4px solid var(--accent-pop);
+}
 
-  .pixel-card {
-    padding: 24px;
-  }
+nav a {
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 5px 15px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
 
-  .page-shell {
-    padding: 45px 16px;
-  }
-} 
+nav a:hover, nav a.active {
+    background-color: var(--bg-pastel-pink);
+    border: 2px solid var(--accent-pop);
+    color: var(--accent-pop);
+}
+
+/* Main Layout Grid */
+main {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Cozy Content Containers */
+.container-box {
+    background: var(--card-bg);
+    border: 4px solid var(--accent-pop);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 5px 5px 0px var(--lavender);
+    margin-bottom: 30px;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    font-family: 'VT323', monospace;
+    font-size: 1.5rem;
+    background-color: var(--accent-pop);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 3px solid #FFF;
+    box-shadow: 3px 3px 0px var(--text-color);
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0px var(--text-color);
+}
+
+/* Dev Log Specifics */
+.devlog-post {
+    border-bottom: 2px dashed var(--bg-pastel-pink);
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.devlog-post:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.date {
+    font-family: 'VT323', monospace;
+    color: var(--accent-pop);
+    font-size: 1.2rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    padding: 20px;
+    color: var(--text-color);
 }
