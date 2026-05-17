@@ -3,121 +3,1283 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blush Bay Ocean Rescue | Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet">
+    <title>Blush Bay Ocean Rescue 🌸 Cozy Aquarium Management Sim</title>
+    <!-- Google Fonts: DynaPuff (Girly/Bubbly), Fredoka (Cozy/Rounded), VT323 (Crisp Pixel-Art Style) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&family=Fredoka:wght@300..700&family=VT323&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS for modern fluid responsive layouts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cozyDark: '#4A3E4D',
+                        hotPink: '#FF65B3',
+                        bubblegumPink: '#FFC6FF',
+                        blushPink: '#FFE5EC',
+                        softLavender: '#E8AEFF',
+                        oceanBlue: '#9BF6FF',
+                        deepOcean: '#4CC9F0',
+                        mintGreen: '#CAFFBF',
+                        pastelYellow: '#FDFFB6',
+                        softWhite: '#FFFDF9',
+                    },
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* --- GLOBAL COZY STYLES --- */
         :root {
-            --bubblegum-pink: #FFC6FF;
-            --soft-lavender: #E8AEFF;
-            --mint-green: #CAFFBF;
-            --ocean-blue: #9BF6FF;
-            --pastel-yellow: #FDFFB6;
             --cozy-dark: #4A3E4D;
-            --white: #FFFFFF;
+            --hot-pink: #FF65B3;
+            --soft-white: #FFFDF9;
+            --retro-border: 4px solid var(--cozy-dark);
+            --retro-shadow: 6px 6px 0px var(--cozy-dark);
+            --retro-shadow-hover: 10px 10px 0px var(--cozy-dark);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Fredoka', sans-serif; }
-        body { background-color: #FFF0F5; color: var(--cozy-dark); line-height: 1.6; padding-top: 70px; }
-        
-        /* --- NAVIGATION BAR --- */
-        nav {
-            background-color: var(--white);
+
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #FFF0F5; /* Warm Lavender Blush background */
+            background-image: radial-gradient(#FFD6E8 1.5px, transparent 1.5px);
+            background-size: 24px 24px;
+            color: var(--cozy-dark);
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        /* --- FLOATING BACKGROUND BUBBLES --- */
+        .bubble-background {
             position: fixed;
-            top: 0; width: 100%; z-index: 1000;
-            box-shadow: 0 4px 0px var(--soft-lavender);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 30px;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
-        .nav-logo { font-size: 1.4rem; font-weight: bold; color: var(--cozy-dark); text-decoration: none; }
-        .nav-links { list-style: none; display: flex; gap: 20px; }
-        .nav-links a { text-decoration: none; color: var(--cozy-dark); font-weight: bold; padding: 8px 15px; border-radius: 20px; transition: 0.2s; }
-        .nav-links a:hover, .nav-links a.active { background-color: var(--bubblegum-pink); color: var(--white); }
 
-        /* --- HERO SECTION --- */
-        header {
-            background: linear-gradient(135deg, var(--bubblegum-pink), var(--ocean-blue));
-            padding: 100px 20px; text-align: center; border-bottom: 8px dashed var(--white);
+        .bubble {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid rgba(155, 246, 255, 0.5);
+            border-radius: 50%;
+            bottom: -60px;
+            animation: floatUp 14s infinite ease-in-out;
         }
-        .hero-title { font-size: 3.5rem; color: var(--white); text-shadow: 3px 3px 0px var(--cozy-dark); margin-bottom: 10px; }
-        .hero-subtitle { font-size: 1.4rem; background-color: var(--white); display: inline-block; padding: 5px 20px; border-radius: 50px; box-shadow: 0 4px 0px var(--soft-lavender); margin-bottom: 30px; }
-        
-        .btn-steam { display: inline-block; background-color: #171a21; color: var(--white); padding: 15px 40px; font-size: 1.3rem; text-decoration: none; border-radius: 50px; font-weight: bold; box-shadow: 0 6px 0px var(--cozy-dark); border: 3px solid var(--white); transition: 0.2s; }
-        .btn-steam:hover { transform: translateY(-3px); box-shadow: 0 9px 0px var(--cozy-dark); background-color: #2a475e; }
 
-        /* --- LAYOUT --- */
-        .container { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
-        .countdown-box { background-color: var(--pastel-yellow); border: 4px dashed var(--soft-lavender); border-radius: 20px; padding: 20px; text-align: center; margin-bottom: 50px; font-weight: bold; }
-        .section-title { text-align: center; font-size: 2.2rem; margin-bottom: 40px; }
-        
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .card { background-color: var(--white); border-radius: 20px; padding: 30px; box-shadow: 0 6px 0px rgba(232,174,255,0.3); border: 2px solid var(--soft-lavender); text-align: center; }
-        .card-icon { font-size: 2.5rem; margin-bottom: 10px; }
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0) scale(0.8); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-110vh) translateX(60px) scale(1.3); opacity: 0; }
+        }
 
-        .newsletter { background-color: var(--mint-green); border-radius: 24px; padding: 40px; text-align: center; border: 3px solid var(--white); }
-        .newsletter input { padding: 12px 20px; font-size: 1rem; border: 2px solid var(--soft-lavender); border-radius: 50px; width: 60%; max-width: 300px; margin-right: 10px; outline: none; }
-        .newsletter button { padding: 12px 28px; font-size: 1rem; background-color: var(--soft-lavender); border: none; border-radius: 50px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 0px #c38be0; }
+        /* --- STICKY NAV BAR (COZY RETRO DESIGN) --- */
+        nav {
+            border: var(--retro-border);
+            box-shadow: var(--retro-shadow);
+        }
 
-        footer { text-align: center; padding: 40px; font-size: 0.9rem; color: #888; }
+        .nav-tab {
+            font-family: 'DynaPuff', cursive;
+            transition: all 0.2s ease;
+        }
+
+        .nav-tab:hover {
+            background-color: #FFE5EC;
+            color: var(--hot-pink);
+            transform: scale(1.05);
+        }
+
+        .nav-tab.active-tab {
+            background-color: var(--hot-pink);
+            color: white;
+            border: 2px solid var(--cozy-dark);
+            box-shadow: 2px 2px 0px var(--cozy-dark);
+        }
+
+        /* --- TRANSITIONS --- */
+        .page-content {
+            display: none;
+            animation: bounceIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .page-content.active-page {
+            display: block;
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.94); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* --- RETRO CARDS & BUTTONS --- */
+        .retro-card {
+            background: var(--soft-white);
+            border: var(--retro-border);
+            border-radius: 24px;
+            box-shadow: var(--retro-shadow);
+        }
+
+        .retro-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--retro-shadow-hover);
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .btn-retro {
+            font-family: 'DynaPuff', cursive;
+            border: var(--retro-border);
+            box-shadow: var(--retro-shadow);
+            transition: all 0.2s ease;
+        }
+
+        .btn-retro:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--retro-shadow-hover);
+        }
+
+        .btn-retro:active {
+            transform: translateY(2px);
+            box-shadow: 2px 2px 0px var(--cozy-dark);
+        }
+
+        /* --- ACTIVE DIALOGUE TOOL SELECTOR --- */
+        .tool-btn {
+            border: 3px solid var(--cozy-dark);
+            box-shadow: 3px 3px 0px var(--cozy-dark);
+            transition: all 0.2s ease;
+        }
+
+        .tool-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            background-color: #FFE5EC;
+        }
+
+        .tool-btn.active-tool {
+            background-color: var(--hot-pink) !important;
+            color: white;
+            transform: scale(1.15) translateY(-4px);
+            box-shadow: 5px 5px 0px var(--cozy-dark);
+        }
+
+        /* --- PUFFY THE JELLYFISH SVG ANIMATIONS --- */
+        .puffy-container {
+            width: 190px;
+            height: 190px;
+            cursor: pointer;
+            position: relative;
+            z-index: 10;
+            transition: all 0.4s ease;
+            animation: swimAround 4.5s infinite ease-in-out;
+        }
+
+        @keyframes swimAround {
+            0%, 100% { transform: translateY(-10px) rotate(-2deg); }
+            50% { transform: translateY(10px) rotate(2deg); }
+        }
+
+        .fish-sad {
+            filter: hue-rotate(240deg) saturate(0.8) brightness(0.9); /* Sick/pale blue undertone */
+            animation: floatSick 3s infinite ease-in-out;
+        }
+
+        @keyframes floatSick {
+            0%, 100% { transform: translateY(-3px) rotate(-1deg) scale(1.05); }
+            50% { transform: translateY(3px) rotate(1deg) scale(1.08); }
+        }
+
+        .fish-happy {
+            animation: swimHappy 2s infinite ease-in-out;
+        }
+
+        @keyframes swimHappy {
+            0%, 100% { transform: translateY(-6px) scale(1.02); }
+            50% { transform: translateY(6px) scale(0.98); }
+        }
+
+        /* --- DECORATOR PLAYGROUND TANK --- */
+        .aquarium-tank {
+            background: linear-gradient(180deg, #bbf2f6 0%, #4CC9F0 100%);
+            border: 5px solid var(--cozy-dark);
+            box-shadow: 0 12px 0px var(--cozy-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glass highlight effect on the tank */
+        .aquarium-tank::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 50%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
+            z-index: 20;
+        }
+
+        .sandy-floor {
+            background: linear-gradient(to top, #F3C68F, #FFE5B4);
+            border-top: 3px dashed var(--cozy-dark);
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            z-index: 2;
+        }
+
+        .bubble-stream {
+            position: absolute;
+            background: rgba(255,255,255,0.3);
+            border: 1px solid rgba(255,255,255,0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: riseUp 6s infinite linear;
+        }
+
+        @keyframes riseUp {
+            0% { transform: translateY(120%) translateX(0) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-20px) translateX(20px) scale(1.2); opacity: 0; }
+        }
+
+        /* Spawned decoration elements style */
+        .spawned-decor {
+            position: absolute;
+            font-size: 3.2rem;
+            cursor: grab;
+            z-index: 100;
+            transition: filter 0.15s ease, outline 0.1s ease;
+            user-select: none;
+            touch-action: none; /* Prevents default scrolling when dragging */
+        }
+
+        .spawned-decor:active {
+            cursor: grabbing;
+        }
+
+        .spawned-decor:hover {
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.15)) brightness(1.1);
+        }
+
+        /* Selected State for Custom Resizing */
+        .decor-selected {
+            outline: 3px dashed #FF65B3 !important;
+            outline-offset: 4px;
+            border-radius: 12px;
+            animation: selectPulse 1.5s infinite linear;
+        }
+
+        @keyframes selectPulse {
+            0%, 100% { outline-color: #FF65B3; }
+            50% { outline-color: #9BF6FF; }
+        }
+
+        /* --- DECOR DELETION EFFECT --- */
+        .decor-burst {
+            position: absolute;
+            pointer-events: none;
+            z-index: 100;
+            animation: popOut 0.4s forwards;
+            font-size: 1.5rem;
+        }
+
+        @keyframes popOut {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+
+        /* --- STICKER BOOK STYLE FOR LORE --- */
+        .sticker-slot {
+            background-color: rgba(74, 62, 77, 0.05);
+            border: 3px dashed #CBD5E1;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .sticker-slot:hover {
+            border-color: var(--hot-pink);
+            background-color: rgba(255, 101, 179, 0.05);
+        }
+
+        .sticker-active {
+            background-color: var(--soft-white) !important;
+            border: 3px solid var(--cozy-dark) !important;
+            box-shadow: 4px 4px 0px var(--cozy-dark);
+            transform: rotate(calc(var(--rot-factor) * 1deg)) scale(1.02);
+        }
+
+        .sticker-active:hover {
+            transform: rotate(0deg) scale(1.06);
+            box-shadow: 6px 6px 0px var(--cozy-dark);
+        }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col justify-between">
 
-    <!-- STICKY NAVBAR -->
-    <nav>
-        <a href="index.html" class="nav-logo">🌸 Blush Bay</a>
-        <ul class="nav-links">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About Game</a></li>
-            <li><a href="lore.html">Lore</a></li>
-            <li><a href="devlog.html">Devlog</a></li>
+    <div class="bubble-background" id="bubbles-container"></div>
+
+    <nav class="fixed top-5 left-1/2 -translate-x-1/2 w-[92%] max-w-6xl bg-white rounded-[40px] z-[1000] flex flex-col md:flex-row justify-between items-center px-6 py-3 gap-3 md:gap-0">
+        <div class="flex items-center gap-2.5">
+            <span class="text-3xl animate-bounce">🌸</span>
+            <a href="#" onclick="showPage('home')" class="logo-text font-['DynaPuff'] text-2xl text-hotPink font-bold drop-shadow-[2px_2px_0px_var(--cozy-dark)] hover:scale-105 transition-transform">Blush Bay</a>
+        </div>
+        <ul class="flex gap-2.5 list-none">
+            <li><button class="nav-tab active-tab text-sm md:text-base px-4 py-2 rounded-full font-semibold" onclick="showPage('home', this)">Home</button></li>
+            <li><button class="nav-tab text-sm md:text-base px-4 py-2 rounded-full font-semibold" onclick="showPage('about', this)">About Game</button></li>
+            <li><button class="nav-tab text-sm md:text-base px-4 py-2 rounded-full font-semibold" onclick="showPage('lore', this)">Lore</button></li>
+            <li><button class="nav-tab text-sm md:text-base px-4 py-2 rounded-full font-semibold" onclick="showPage('devlog', this)">Devlog</button></li>
         </ul>
     </nav>
 
-    <!-- HERO -->
-    <header>
-        <h1 class="hero-title">🫧 Blush Bay Ocean Rescue 🐠</h1>
-        <p class="hero-subtitle">An Isometric Pixel Art Aquarium Management Sim</p>
-        <br><br>
-        <a href="#" class="btn-steam">🌟 Wishlist on Steam 🌟</a>
-    </header>
+    <main class="w-full max-w-6xl mx-auto px-4 mt-36 flex-grow">
 
-    <div class="container">
-        <div class="countdown-box">
-            🌊 Arriving on Steam in May 2027! Get ready to rescue! 🌊
+        <!-- ================= HOME TAB (WITH INTERACTIVE JELLYFISH MEDICAL GAME) ================= -->
+        <div id="home" class="page-content active-page">
+            <header class="retro-card overflow-hidden text-center p-8 md:p-12 mb-10 relative bg-gradient-to-tr from-blushPink to-oceanBlue">
+                <!-- Floating Emojis / Stickers -->
+                <span class="absolute top-5 left-8 text-5xl animate-pulse">🐠</span>
+                <span class="absolute bottom-5 right-8 text-5xl animate-bounce">✨</span>
+                
+                <h1 class="font-['DynaPuff'] text-4xl md:text-6xl text-hotPink drop-shadow-[4px_4px_0px_var(--cozy-dark)] font-black leading-tight mb-4">Blush Bay<br>Ocean Rescue</h1>
+                <p class="text-lg md:text-xl font-bold bg-softWhite border-2 border-cozyDark rounded-full px-6 py-2 inline-block shadow-[3px_3px_0px_var(--cozy-dark)] mb-6">
+                    An isometric pixel-art aquarium sanctuary of your very own! 🫧
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-4 mt-4">
+                    <a href="https://store.steampowered.com" target="_blank" class="btn-retro btn-wishlist bg-pastelYellow px-8 py-4 text-lg font-bold rounded-full text-cozyDark inline-flex items-center gap-2">
+                        <i class="fa-brands fa-steam text-xl"></i> Wishlist on Steam
+                    </a>
+                    <button onclick="showPage('about')" class="btn-retro bg-oceanBlue px-8 py-4 text-lg font-bold rounded-full text-cozyDark inline-flex items-center gap-2">
+                        <i class="fa-solid fa-gamepad text-xl"></i> Explore Sanctuary
+                    </button>
+                </div>
+            </header>
+
+            <div class="bg-mintGreen border-4 border-cozyDark rounded-2xl shadow-[6px_6px_0px_var(--cozy-dark)] p-4 text-center font-bold text-lg mb-10 animate-pulse">
+                🌱 Release Window: May 2027 • Rebuild, rescue, design, and release gorgeous critters back to the wild!
+            </div>
+
+            <section class="retro-card bg-softWhite p-6 md:p-10 mb-12 text-center relative">
+                <h2 class="font-['DynaPuff'] text-3xl text-hotPink mb-2 drop-shadow-[2px_2px_0px_var(--cozy-dark)]">🪼 Save Aurelia the Jellyfish!</h2>
+                <p class="max-w-2xl mx-auto mb-6 text-gray-700">Poor Aurelia swallowed some plastic particles and drifted into Blush Bay sick and dim. Use your caretaker kit to heal her!</p>
+                
+                <!-- THE INTERACTIVE TANK CONTAINER -->
+                <div class="aquarium-tank h-80 rounded-2xl max-w-2xl mx-auto relative flex items-center justify-center overflow-hidden mb-6" id="minigame-tank">
+                    
+                    <!-- Decorative Coral Background layers -->
+                    <span class="absolute bottom-6 left-6 text-4xl z-10 opacity-75">🌿</span>
+                    <span class="absolute bottom-6 right-6 text-4xl z-10 opacity-75">🪸</span>
+                    
+                    <!-- Floating Bubbles Layer Inside Tank -->
+                    <div class="absolute inset-0 pointer-events-none" id="tank-bubbles-container"></div>
+                    
+                    <!-- Active Diagnosis Message Box -->
+                    <div id="status-bubble" class="absolute top-4 bg-white border-2 border-cozyDark rounded-full px-4 py-1 text-xs md:text-sm font-bold shadow-[2px_2px_0px_var(--cozy-dark)] z-30 animate-bounce">
+                        Status: Dim & Droopy 🤒
+                    </div>
+
+                    <!-- THE JELLYFISH INTERACTIVE SPRITE (Ultra-cute vector SVG) -->
+                    <div class="puffy-container fish-sad" id="puffy-fish" onclick="clickPuffy()">
+                        <svg viewBox="0 0 100 100" class="w-full h-full">
+                            <!-- Soft drop shadow underneath -->
+                            <ellipse cx="50" cy="85" rx="30" ry="6" fill="rgba(74, 62, 77, 0.12)" />
+
+                            <!-- Floating sparkles behind body -->
+                            <g id="jelly-sparkles-back">
+                                <circle cx="28" cy="24" r="2" fill="#FFE5EC" opacity="0.6"/>
+                                <circle cx="72" cy="24" r="2.5" fill="#9BF6FF" opacity="0.6"/>
+                            </g>
+
+                            <!-- Jellyfish Bell (Smooth semi-circle with custom cute waves at bottom) -->
+                            <path id="puffy-body" d="M 20 48 C 20 18, 80 18, 80 48 C 72 52, 68 46, 50 50 C 32 46, 28 52, 20 48 Z" fill="#E8AEFF" stroke="#4A3E4D" stroke-width="3" />
+
+                            <!-- Cute pastel spots on the bell -->
+                            <circle cx="34" cy="30" r="2.5" fill="white" opacity="0.8" />
+                            <circle cx="66" cy="32" r="1.5" fill="white" opacity="0.8" />
+                            <circle cx="50" cy="24" r="2" fill="white" opacity="0.8" />
+
+                            <!-- Tentacles -->
+                            <g id="jelly-tentacles">
+                                <!-- Wave-looking tentacles mapped to cure color updates -->
+                                <path id="puffy-tail" d="M 30 50 Q 22 70 32 85 Q 35 88 32 85 Q 26 70 34 50 Z" fill="#FFC6FF" stroke="#4A3E4D" stroke-width="2" />
+                                <path d="M 50 50 Q 56 72 48 88 Q 50 90 52 88 Q 60 72 50 50 Z" fill="#B388FF" stroke="#4A3E4D" stroke-width="2" />
+                                <path d="M 70 50 Q 78 70 68 85 Q 65 88 68 85 Q 82 70 66 50 Z" fill="#FFC6FF" stroke="#4A3E4D" stroke-width="2" />
+                                
+                                <path d="M 42 50 Q 36 65 44 78 Q 38 65 46 50 Z" fill="#FFB7B2" opacity="0.7" />
+                                <path d="M 58 50 Q 64 65 56 78 Q 62 65 54 50 Z" fill="#FFB7B2" opacity="0.7" />
+                            </g>
+
+                            <!-- Sparkles on sides -->
+                            <g id="jelly-sparkles-front">
+                                <!-- Left side little star -->
+                                <path d="M 12 30 L 13.5 33 L 16.5 33.5 L 14.5 35.5 L 15 38.5 L 12 37 L 9 38.5 L 9.5 35.5 L 7.5 33.5 L 10.5 33 Z" fill="#FDFFB6" stroke="#4A3E4D" stroke-width="1" />
+                                <!-- Right side little star -->
+                                <path d="M 88 28 L 89.5 31 L 92.5 31.5 L 90.5 33.5 L 91 36.5 L 88 35 L 85 36.5 L 85.5 33.5 L 83.5 31.5 L 86.5 31 Z" fill="#FDFFB6" stroke="#4A3E4D" stroke-width="1" />
+                            </g>
+
+                            <!-- Glowing pink blush circles -->
+                            <circle cx="34" cy="42" r="6" fill="#FF8A8A" opacity="0.7" />
+                            <circle cx="66" cy="42" r="6" fill="#FF8A8A" opacity="0.7" />
+
+                            <!-- DIZZY / SICK EYES (Adorable pleading wet look with sad brows) -->
+                            <g id="eyes-sick">
+                                <ellipse cx="36" cy="36" rx="5.5" ry="7.5" fill="#4A3E4D" />
+                                <circle cx="34" cy="33" r="2" fill="white" />
+                                <circle cx="37.5" cy="39" r="0.9" fill="white" />
+                                
+                                <ellipse cx="64" cy="36" rx="5.5" ry="7.5" fill="#4A3E4D" />
+                                <circle cx="62" cy="33" r="2" fill="white" />
+                                <circle cx="65.5" cy="39" r="0.9" fill="white" />
+
+                                <path d="M 30 28 Q 36 31 41 28" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" />
+                                <path d="M 59 28 Q 64 31 69 28" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" />
+                                
+                                <path d="M 32 42 L 29 46 L 32 47 Z" fill="#9BF6FF" stroke="#4A3E4D" stroke-width="1.2" />
+                                <path d="M 68 42 L 71 46 L 68 47 Z" fill="#9BF6FF" stroke="#4A3E4D" stroke-width="1.2" />
+                            </g>
+
+                            <!-- HAPPY EYES (Super sparkling shiny anime look with stars!) -->
+                            <g id="eyes-happy" display="none">
+                                <ellipse cx="36" cy="36" rx="6.5" ry="8.5" fill="#4A3E4D" />
+                                <path d="M 36 32 L 37 34.5 L 39.5 35 L 37.5 36.5 L 38 39 L 36 37.5 L 34 39 L 34.5 36.5 L 32.5 35 L 35 34.5 Z" fill="white" />
+                                
+                                <ellipse cx="64" cy="36" rx="6.5" ry="8.5" fill="#4A3E4D" />
+                                <path d="M 64 32 L 65 34.5 L 67.5 35 L 65.5 36.5 L 66 39 L 64 37.5 L 62 39 L 62.5 36.5 L 60.5 35 L 63 34.5 Z" fill="white" />
+
+                                <path d="M 30 25 Q 36 22 41 25" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" />
+                                <path d="M 59 25 Q 64 22 69 25" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" />
+                            </g>
+
+                            <!-- Mouth details -->
+                            <path id="mouth-sad" d="M 46 42 Q 50 46 54 42" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" />
+                            <path id="mouth-happy" d="M 45 40 Q 47.5 43 50 40 Q 52.5 43 55 40" fill="none" stroke="#4A3E4D" stroke-width="2.5" stroke-linecap="round" display="none" />
+                        </svg>
+                    </div>
+
+                    <!-- The Sandy Bottom Floor -->
+                    <div class="sandy-floor"></div>
+                </div>
+
+                <p class="font-bold mb-4 text-cozyDark">Choose a care item from your nursery toolkit:</p>
+                <div class="flex justify-center gap-4 mb-6 flex-wrap">
+                    <button class="tool-btn bg-white rounded-full w-16 h-16 text-3xl flex items-center justify-center" onclick="selectTool('creme', this)" title="Sparkly Sea-Salm Creme">🧴</button>
+                    <button class="tool-btn bg-white rounded-full w-16 h-16 text-3xl flex items-center justify-center" onclick="selectTool('algae', this)" title="Nutritious Sea-Kelp Treat">🌿</button>
+                    <button class="tool-btn bg-white rounded-full w-16 h-16 text-3xl flex items-center justify-center" onclick="selectTool('love', this)" title="Warm Cozy Cuddle">💖</button>
+                </div>
+                <p id="game-feedback" class="text-hotPink font-extrabold italic text-lg transition-all duration-300">Pick a tool first, then click Aurelia inside her tank to heal her!</p>
+            </section>
         </div>
 
-        <h2 class="section-title">Welcome to the Bay ✨</h2>
-        <div class="grid">
-            <div class="card">
-                <div class="card-icon">🩺</div>
-                <h3>Heal Sick Fish</h3>
-                <p>Diagnose cute pixel-art ocean friends and give them the cozy care they need.</p>
+
+        <!-- ================= ABOUT TAB (WITH DRAGGABLE & SIZABLE AQUARIUM BUILDER) ================= -->
+        <div id="about" class="page-content">
+            <div class="retro-card bg-gradient-to-tr from-softLavender to-white p-8 md:p-12 mb-10 text-center">
+                <h1 class="font-['DynaPuff'] text-3xl md:text-5xl text-cozyDark drop-shadow-[2px_2px_0px_white] mb-3">About the Sanctuary 🐚</h1>
+                <p class="text-lg font-bold">Discover the heartwarming tasks that await in your personalized eco-haven!</p>
             </div>
-            <div class="card">
-                <div class="card-icon">💖</div>
-                <h3>Decorate Your Way</h3>
-                <p>Spend visitor donations on aesthetic, girly-pop decorations for your tanks.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                <div class="retro-card bg-white p-6">
+                    <div class="text-4xl mb-4 text-center">🩺</div>
+                    <h3 class="font-bold text-xl text-hotPink mb-2 text-center">Gentle Care</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed text-center">Fulfill daily treatment requirements, from gently untangling nets to using vitamin pellets and soothing physical petting interactions.</p>
+                </div>
+                
+                <div class="retro-card bg-white p-6">
+                    <div class="text-4xl mb-4 text-center">🎨</div>
+                    <h3 class="font-bold text-xl text-hotPink mb-2 text-center">Boutique Tanks</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed text-center">Transform empty glass cubes into colorful marine worlds! Buy decorative pink corals, sunken miniature castles, and sparkling light features.</p>
+                </div>
+
+                <div class="retro-card bg-white p-6">
+                    <div class="text-4xl mb-4 text-center">🌊</div>
+                    <h3 class="font-bold text-xl text-hotPink mb-2 text-center">Eco Restoration</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed text-center">Watch your healed fish leap into the beautiful neon ocean. Their presence permanently clears industrial pollution and grows healthy coral!</p>
+                </div>
             </div>
-            <div class="card">
-                <div class="card-icon">🌍</div>
-                <h3>Restore the Reef</h3>
-                <p>Release healthy fish back into the ocean to revive the local ecosystem!</p>
+
+            <section class="retro-card bg-white p-6 md:p-8 mb-12">
+                <h2 class="font-['DynaPuff'] text-2xl md:text-3xl text-hotPink mb-2 text-center">🎨 Decorate Your Dream Aquarium!</h2>
+                <p class="text-center text-gray-600 mb-6">Select decorations below to spawn them. <strong>Click to Select</strong>, then <strong>drag</strong> items to design. Use the controls below to resize them! <strong>Double-click</strong> to delete.</p>
+
+                <!-- THE PHYSICAL DRAGGABLE PLAYGROUND TANK -->
+                <div class="aquarium-tank h-[420px] rounded-2xl relative overflow-hidden mb-6" id="playground-tank">
+                    
+                    <!-- Decorative background items -->
+                    <span class="absolute bottom-10 left-10 text-xl opacity-20 select-none pointer-events-none">🫧</span>
+                    <span class="absolute bottom-32 right-12 text-2xl opacity-25 select-none pointer-events-none">🫧</span>
+                    <span class="absolute bottom-24 left-24 text-sm opacity-10 select-none pointer-events-none">🫧</span>
+
+                    <!-- Empty State Text (Vanishes when items are placed) -->
+                    <div id="tank-empty-state" class="absolute inset-0 flex items-center justify-center flex-col text-cozyDark opacity-60 px-4 text-center select-none pointer-events-none">
+                        <span class="text-5xl mb-2 animate-bounce">💧</span>
+                        <p class="font-bold">Your tank is currently clean & empty!</p>
+                        <p class="text-xs mt-1">Tap decorations below to design your layout, drag, or resize them!</p>
+                    </div>
+
+                    <!-- Sandbox Sandy floor -->
+                    <div class="sandy-floor"></div>
+                </div>
+
+                <!-- SELECTABLE DECOR ITEMS PANELS -->
+                <div class="bg-blushPink border-3 border-cozyDark rounded-xl p-4 shadow-[4px_4px_0px_var(--cozy-dark)]">
+                    <p class="text-center font-bold mb-3 text-sm uppercase tracking-wider text-cozyDark">🛒 Interactive Store Catalog</p>
+                    
+                    <div class="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-4">
+                        <button onclick="spawnDecor('🏰', 'Sunken Castle', false)" class="btn-retro bg-white hover:bg-pastelYellow p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                            <span>🏰</span> Castle
+                        </button>
+                        <button onclick="spawnDecor('🪸', 'Pink Coral', false)" class="btn-retro bg-white hover:bg-pastelYellow p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                            <span>🪸</span> Pink Coral
+                        </button>
+                        <button onclick="spawnDecor('🐚', 'Magical Shell', false)" class="btn-retro bg-white hover:bg-pastelYellow p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                            <span>🐚</span> Star Shell
+                        </button>
+                        <button onclick="spawnDecor('🧜‍♀️', 'Mermaid', false)" class="btn-retro bg-white hover:bg-pastelYellow p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm">
+                            <span>🧜‍♀️</span> Mermaid
+                        </button>
+                        <button onclick="spawnDecor('🐠', 'Gold Fish', true)" class="btn-retro bg-white hover:bg-pastelYellow p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm text-hotPink">
+                            <span>🐠</span> Swimming Fish
+                        </button>
+                    </div>
+
+                    <!-- INTERACTIVE SELECTION SIZE CONTROLS -->
+                    <div class="bg-white border-2 border-cozyDark rounded-xl p-3 mb-3 flex flex-col sm:flex-row justify-between items-center gap-3">
+                        <div class="text-sm font-bold text-cozyDark">
+                            🌟 Click on an item in the tank first to select it, then adjust size:
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="resizeSelected('bigger')" class="px-4 py-2 bg-pastelYellow border-2 border-cozyDark rounded-full font-bold text-xs shadow-[2px_2px_0px_#4A3E4D] hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
+                                ➕ Bigger
+                            </button>
+                            <button onclick="resizeSelected('smaller')" class="px-4 py-2 bg-bubblegumPink border-2 border-cozyDark rounded-full font-bold text-xs shadow-[2px_2px_0px_#4A3E4D] hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
+                                ➖ Smaller
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 text-center">
+                        <button onclick="clearDecorTank()" class="text-xs font-bold text-red-500 bg-white border-2 border-cozyDark px-4 py-1.5 rounded-full shadow-[2px_2px_0px_var(--cozy-dark)] hover:bg-red-50 hover:translate-y-[-1px] active:translate-y-[1px] transition-all">
+                            🗑️ Reset Playground Tank
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= LORE TAB (SCRAPBOOK & STICKER BOOK) ================= -->
+        <div id="lore" class="page-content">
+            <div class="retro-card bg-gradient-to-tr from-pastelYellow to-white p-8 md:p-12 mb-10 text-center">
+                <h1 class="font-['DynaPuff'] text-3xl md:text-5xl text-cozyDark mb-3">Storybook & Character Diary</h1>
+                <p class="text-lg font-bold">Uncover the magical ocean secrets of the historical Blush Bay!</p>
+            </div>
+
+            <!-- STORYBOOK WRAPPER -->
+            <div class="bg-[#FFFDF9] border-4 border-cozyDark rounded-3xl p-6 md:p-10 shadow-[8px_8px_0px_var(--cozy-dark)] mb-10 relative">
+                
+                <!-- Cute corner stickers -->
+                <span class="absolute -top-4 -left-4 text-4xl transform -rotate-12 select-none">🔖</span>
+                <span class="absolute -bottom-4 -right-4 text-4xl transform rotate-12 select-none">🎀</span>
+
+                <div class="max-w-4xl mx-auto">
+                    <h2 class="font-['DynaPuff'] text-2xl md:text-3xl text-hotPink mb-4 border-b-4 border-dashed border-blushPink pb-2">Once Upon a Blush Bay...</h2>
+                    
+                    <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6 font-medium">
+                        Legend holds that the tides of Blush Bay were not always regular blue water. Decades ago, the bay was a glowing, bioluminescent pink ocean haven fed by magical crystalline reefs. Marine species from across the globes migrated here specifically to raise their young inside the warm, sparkling waters.
+                    </p>
+
+                    <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-6 font-medium">
+                        But as machinery and factories crowded the mainland, soot and plastic sheets sank into the seabed. The glowing pink coral reefs grew dark, and the cozy critters started to fall ill. The legendary light faded.
+                    </p>
+
+                    <p class="text-base md:text-lg leading-relaxed text-gray-700 mb-8 font-medium">
+                        Now, as the newly appointed sanctuary director, your compassion holds the key to triggering a biological recovery. Every fish you nurture, raise, and happily release carries specialized minerals that slowly dissolve in the tide, restoring Blush Bay back into a shimmering pastel paradise!
+                    </p>
+
+                    <!-- THE STICKER ALBUM -->
+                    <h3 class="font-['DynaPuff'] text-2xl text-cozyDark mb-2 text-center">🌸 Interactive Sticker Book Catalogue 🌸</h3>
+                    <p class="text-center text-xs text-gray-500 mb-6">Click on a sticker slot to "peel and paste" and reveal its collector's card!</p>
+                    
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                        <!-- Sticker Slot 1 -->
+                        <div onclick="peelSticker('clown', this)" class="sticker-slot rounded-2xl p-4 flex flex-col items-center justify-center text-center h-44" style="--rot-factor: -2;">
+                            <span class="text-5xl mb-2 transition-transform hover:scale-110">🐠</span>
+                            <h4 class="font-bold text-xs uppercase text-cozyDark opacity-60">Clownfish</h4>
+                            <span class="mt-2 bg-hotPink text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-[1px_1px_0px_#4A3E4D]">PEEL STICKER</span>
+                        </div>
+
+                        <!-- Sticker Slot 2 -->
+                        <div onclick="peelSticker('strawberry', this)" class="sticker-slot rounded-2xl p-4 flex flex-col items-center justify-center text-center h-44" style="--rot-factor: 2;">
+                            <span class="text-5xl mb-2 transition-transform hover:scale-110">🐙</span>
+                            <h4 class="font-bold text-xs uppercase text-cozyDark opacity-60">Berry Octopus</h4>
+                            <span class="mt-2 bg-hotPink text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-[1px_1px_0px_#4A3E4D]">PEEL STICKER</span>
+                        </div>
+
+                        <!-- Sticker Slot 3 -->
+                        <div onclick="peelSticker('puffer', this)" class="sticker-slot rounded-2xl p-4 flex flex-col items-center justify-center text-center h-44" style="--rot-factor: -1;">
+                            <span class="text-5xl mb-2 transition-transform hover:scale-110">🪼</span>
+                            <h4 class="font-bold text-xs uppercase text-cozyDark opacity-60">Pastel Jelly</h4>
+                            <span class="mt-2 bg-hotPink text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-[1px_1px_0px_#4A3E4D]">PEEL STICKER</span>
+                        </div>
+
+                        <!-- Sticker Slot 4 -->
+                        <div onclick="peelSticker('jelly', this)" class="sticker-slot rounded-2xl p-4 flex flex-col items-center justify-center text-center h-44" style="--rot-factor: 3;">
+                            <span class="text-5xl mb-2 transition-transform hover:scale-110">🐡</span>
+                            <h4 class="font-bold text-xs uppercase text-cozyDark opacity-60">Pufferfish</h4>
+                            <span class="mt-2 bg-hotPink text-white text-[10px] px-2 py-0.5 rounded-full font-bold shadow-[1px_1px_0px_#4A3E4D]">PEEL STICKER</span>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Info Panel displays when sticker is selected -->
+                    <div id="sticker-details-card" class="bg-blushPink border-3 border-cozyDark rounded-2xl p-6 shadow-[4px_4px_0px_var(--cozy-dark)] hidden transition-all duration-300">
+                        <div class="flex flex-col sm:flex-row items-center gap-6">
+                            <span id="sticker-display-emoji" class="text-7xl p-4 bg-white border-2 border-cozyDark rounded-3xl shadow-[3px_3px_0px_var(--cozy-dark)]">🐠</span>
+                            <div class="flex-grow text-center sm:text-left">
+                                <h3 id="sticker-display-name" class="font-['DynaPuff'] text-2xl text-hotPink drop-shadow-[1px_1px_0px_var(--cozy-dark)] mb-1">Clownfish</h3>
+                                <p id="sticker-display-rarity" class="text-xs font-extrabold uppercase bg-pastelYellow px-2.5 py-1 border-2 border-cozyDark rounded-full inline-block mb-3">Rarity: Common</p>
+                                <p id="sticker-display-desc" class="text-sm text-gray-700 font-medium leading-relaxed italic">"Super bubbly, but extra sensitive to deep reef microplastics. Re-grows healthy neon coral when freed."</p>
+                                <div class="grid grid-cols-2 gap-2 mt-4 text-xs font-bold text-cozyDark border-t border-dashed border-cozyDark pt-3">
+                                    <div>🍰 Diet: <span id="sticker-display-diet" class="font-medium text-gray-700">Sea-Sponge Cake</span></div>
+                                    <div>⚡ Recovery: <span id="sticker-display-recovery" class="font-medium text-gray-700">+12% Glow</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
 
-        <!-- NEWSLETTER -->
-        <div class="newsletter">
-            <h2>Join the Rescue Team 💕</h2>
-            <p style="margin-bottom: 20px;">Get alerted the second our Steam demo goes live!</p>
-            <form onsubmit="alert('Yay! Welcome to Blush Bay! 🌸'); return false;">
-                <input type="email" placeholder="your.email@cozy.com" required>
-                <button type="submit">Subscribe</button>
+
+        <!-- ================= DEVLOG TAB (HANDWRITTEN STYLE DIARY) ================= -->
+        <div id="devlog" class="page-content">
+            <div class="retro-card bg-gradient-to-tr from-mintGreen to-white p-8 md:p-12 mb-10 text-center">
+                <h1 class="font-['DynaPuff'] text-3xl md:text-5xl text-cozyDark mb-3">Scrapbook Devlog 📂</h1>
+                <p class="text-lg font-bold">Follow along with our development progress and cute design logs!</p>
+            </div>
+
+            <!-- SCRAPBOOK DIARY CONTAINER -->
+            <div class="flex flex-col gap-10 max-w-4xl mx-auto mb-10">
+                
+                <!-- Entry 2 -->
+                <article class="bg-white border-4 border-cozyDark rounded-3xl p-6 md:p-8 shadow-[8px_8px_0px_var(--cozy-dark)] relative overflow-hidden">
+                    <!-- Retro Tape Style Element -->
+                    <span class="absolute top-2 left-6 bg-bubblegumPink text-white text-xs font-bold px-3 py-1 border-2 border-cozyDark rotate-[-2deg] shadow-[2px_2px_0px_var(--cozy-dark)]">
+                        POLISH & UI 🎨
+                    </span>
+                    
+                    <div class="flex flex-col md:flex-row gap-6 mt-4">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-center mb-2 border-b-2 border-dashed border-blushPink pb-2">
+                                <span class="font-['VT323'] text-2xl text-hotPink font-bold">May 17, 2026</span>
+                                <span class="bg-blushPink text-xs px-3 py-1 rounded-full font-bold">UI Design</span>
+                            </div>
+                            <h3 class="font-bold text-xl text-cozyDark mb-2">Constructing Cozy Interface Modules</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                This week we completed building the custom diagnostics clipboard. It was vital that the menus didn't feel cold or clinical, so we incorporated bubble textures, hand-written diary fonts, and sparkling custom stars that emit whenever a medicine balm is applied to your marine friends. We also began prototyping the coral growth simulator mechanics!
+                            </p>
+                        </div>
+                        
+                        <!-- Aesthetic Digital Polaroid Snapshot -->
+                        <div class="border-2 border-cozyDark bg-white p-3 shadow-[4px_4px_0px_var(--cozy-dark)] rotate-[2deg] self-center md:w-56 shrink-0">
+                            <!-- Visual placeholder rendering beautiful generated styles -->
+                            <div class="bg-gradient-to-br from-bubblegumPink to-softLavender h-36 border-2 border-cozyDark flex items-center justify-center rounded-lg">
+                                <span class="text-4xl animate-pulse">👑</span>
+                            </div>
+                            <p class="font-['VT323'] text-sm text-center mt-2 font-bold text-cozyDark">Aesthetic Tank UI</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Entry 1 -->
+                <article class="bg-white border-4 border-cozyDark rounded-3xl p-6 md:p-8 shadow-[8px_8px_0px_var(--cozy-dark)] relative overflow-hidden">
+                    <span class="absolute top-2 left-6 bg-oceanBlue text-white text-xs font-bold px-3 py-1 border-2 border-cozyDark rotate-[-1deg] shadow-[2px_2px_0px_var(--cozy-dark)]">
+                        HELLO WORLD ✨
+                    </span>
+                    
+                    <div class="flex flex-col md:flex-row gap-6 mt-4">
+                        <div class="flex-grow">
+                            <div class="flex justify-between items-center mb-2 border-b-2 border-dashed border-blushPink pb-2">
+                                <span class="font-['VT323'] text-2xl text-hotPink font-bold">April 29, 2026</span>
+                                <span class="bg-blushPink text-xs px-3 py-1 rounded-full font-bold">Concept Design</span>
+                            </div>
+                            <h3 class="font-bold text-xl text-cozyDark mb-2">Our Vision for Blush Bay</h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-4">
+                                Development has officially bloomed! We wanted to craft an environment that offers absolute tranquility. Instead of placing pressure on players with harsh failing timers or game-overs, we focused heavily on therapeutic interactions—saving injured marine life brings a high sense of rewarding accomplishment, and styling custom tanks lets your imagination wander.
+                            </p>
+                        </div>
+                        
+                        <div class="border-2 border-cozyDark bg-white p-3 shadow-[4px_4px_0px_var(--cozy-dark)] rotate-[-1.5deg] self-center md:w-56 shrink-0">
+                            <div class="bg-gradient-to-br from-oceanBlue to-mintGreen h-36 border-2 border-cozyDark flex items-center justify-center rounded-lg">
+                                <span class="text-4xl">🐚</span>
+                            </div>
+                            <p class="font-['VT323'] text-sm text-center mt-2 font-bold text-cozyDark">Dreamy Shell Concepts</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+
+        <section class="retro-card bg-blushPink p-8 md:p-10 mb-12 text-center relative overflow-hidden">
+            <span class="absolute -top-10 -right-10 text-9xl opacity-10 pointer-events-none select-none">✉️</span>
+            <h2 class="font-['DynaPuff'] text-2xl md:text-3xl text-cozyDark mb-2">Join the Sea Rescue Club 💕</h2>
+            <p class="max-w-xl mx-auto mb-6 text-gray-700">Subscribe to our cozy mailing list to receive exclusive dev updates and a notification the moment our free demo drops!</p>
+            
+            <form class="flex flex-col sm:flex-row justify-center items-center gap-3" onsubmit="handleSubscribe(event)">
+                <input type="email" id="subscriber-email" placeholder="your.cute.email@domain.com" class="border-3 border-cozyDark px-6 py-3 rounded-full w-full max-w-sm outline-none focus:ring-2 focus:ring-hotPink font-semibold text-cozyDark shadow-[3px_3px_0px_var(--cozy-dark)]" required>
+                <button type="submit" class="btn-retro bg-pastelYellow hover:bg-[#ffed7a] text-cozyDark px-8 py-3.5 rounded-full font-bold text-sm w-full sm:w-auto">
+                    Subscribe
+                </button>
             </form>
+            <p id="subscription-success" class="text-green-600 font-extrabold mt-4 hidden">🎉 Congratulations! You are officially a Blush Bay Cadet! Check your inbox soon! 🌸🌊</p>
+        </section>
+
+    </main>
+
+    <div class="bg-cozyDark text-white py-3 w-full fixed bottom-0 left-0 overflow-hidden z-[1010]">
+        <div class="whitespace-nowrap inline-block animate-[ticker_25s_linear_infinite]" style="animation-play-state: running;">
+            <span class="font-['VT323'] text-xl tracking-wider px-8">🐳 COZY VIBES INCOMING</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">🐚 STEAM WISHLIST NOW AVAILABLE</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">✨ MAY 2027 RELEASE WINDOW DETECTED</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">🌸 REHABILITATE WATER BUDS FOR EXTRA GLOW</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">🐳 COZY VIBES INCOMING</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">🐚 STEAM WISHLIST NOW AVAILABLE</span>
+            <span class="font-['VT323'] text-xl tracking-wider px-8">✨ MAY 2027 RELEASE WINDOW DETECTED</span>
         </div>
     </div>
 
-    <footer>
-        <p>© 2026 Blush Bay Studio. Made with love & bubbles 🫧</p>
-    </footer>
+    <!-- Ticker keyframe inline stylesheet -->
+    <style>
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+    </style>
+
+    <script>
+        // BACKGROUND AMBIENT BUBBLES GENERATION
+        const bubbleContainer = document.getElementById('bubbles-container');
+        const bubbleEmojis = ['🫧', '🫧', '✨', '💧', '💖'];
+        
+        function generateBackgroundBubbles() {
+            for (let i = 0; i < 15; i++) {
+                createBackgroundBubble();
+            }
+        }
+
+        function createBackgroundBubble() {
+            const bubbleEl = document.createElement('div');
+            const size = Math.random() * 30 + 12;
+            bubbleEl.className = 'bubble';
+            bubbleEl.style.width = `${size}px`;
+            bubbleEl.style.height = `${size}px`;
+            bubbleEl.style.left = `${Math.random() * 100}vw`;
+            bubbleEl.style.animationDelay = `${Math.random() * 6}s`;
+            bubbleEl.style.animationDuration = `${Math.random() * 8 + 7}s`;
+            
+            if(Math.random() > 0.65) {
+                bubbleEl.innerHTML = bubbleEmojis[Math.floor(Math.random() * bubbleEmojis.length)];
+                bubbleEl.style.display = 'flex';
+                bubbleEl.style.alignItems = 'center';
+                bubbleEl.style.justifyContent = 'center';
+                bubbleEl.style.fontSize = `${size * 0.55}px`;
+                bubbleEl.style.border = 'none';
+                bubbleEl.style.background = 'none';
+            }
+
+            bubbleContainer.appendChild(bubbleEl);
+            
+            bubbleEl.addEventListener('animationend', () => {
+                bubbleEl.remove();
+                createBackgroundBubble();
+            });
+        }
+
+        // TANK INTERNAL ENVIRONMENT BUBBLE STREAMS
+        function startTankBubbleStreams(tankId) {
+            const tank = document.getElementById(tankId);
+            if (!tank) return;
+
+            setInterval(() => {
+                const b = document.createElement('div');
+                b.className = 'bubble-stream';
+                const size = Math.random() * 10 + 6;
+                b.style.width = `${size}px`;
+                b.style.height = `${size}px`;
+                b.style.left = `${Math.random() * 90 + 5}%`;
+                b.style.animationDuration = `${Math.random() * 3 + 3}s`;
+                tank.appendChild(b);
+
+                b.addEventListener('animationend', () => {
+                    b.remove();
+                });
+            }, 800);
+        }
+
+        // COZY DYNAMIC TAB SWITCHER (FIXED REDIRECT TAB SELECTION)
+        function showPage(pageId, tabButton) {
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(p => p.classList.remove('active-page'));
+
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active-page');
+            }
+
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach(t => t.classList.remove('active-tab'));
+
+            if (tabButton) {
+                tabButton.classList.add('active-tab');
+            } else {
+                // If redirected from internal link (like "Explore Sanctuary" -> about page)
+                // We locate the correct top nav bar button automatically!
+                const matchingTab = Array.from(tabs).find(t => t.getAttribute('onclick')?.includes(pageId));
+                if (matchingTab) {
+                    matchingTab.classList.add('active-tab');
+                }
+            }
+
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        // COZY DIAGNOSTIC MINI-RESCUE ENGINE (FOR THE KAWAI JELLYFISH)
+        let activeRemedy = null;
+        let isPuffySick = true;
+
+        function selectTool(remedyType, buttonEl) {
+            activeRemedy = remedyType;
+            
+            const tools = document.querySelectorAll('.tool-btn');
+            tools.forEach(t => t.classList.remove('active-tool'));
+            buttonEl.classList.add('active-tool');
+
+            const fb = document.getElementById('game-feedback');
+            if(remedyType === 'creme') {
+                fb.textContent = "🧴 Sparkly Sea-Salm Creme selected! Rub onto Aurelia by clicking her bell!";
+            } else if (remedyType === 'algae') {
+                fb.textContent = "🌿 Nutritious Sea-Kelp Treat ready! Click Aurelia inside the tank to feed her.";
+            } else {
+                fb.textContent = "💖 Cozy Cuddle chosen! Click Aurelia to give her warm loving vibes!";
+            }
+        }
+
+        function clickPuffy() {
+            const puffyFish = document.getElementById('puffy-fish');
+            const statusEl = document.getElementById('status-bubble');
+            const fbEl = document.getElementById('game-feedback');
+            
+            const bodySvg = document.getElementById('puffy-body');
+            const tailSvg = document.getElementById('puffy-tail');
+            const eyesSick = document.getElementById('eyes-sick');
+            const eyesHappy = document.getElementById('eyes-happy');
+            const mouthSad = document.getElementById('mouth-sad');
+            const mouthHappy = document.getElementById('mouth-happy');
+
+            if (!activeRemedy) {
+                fbEl.textContent = "⚠️ Please select a treatment tool from your nursery toolkit below first!";
+                return;
+            }
+
+            if (!isPuffySick) {
+                fbEl.textContent = "💖 Aurelia is already fully glowing and happily floating! Thank you, Cadets!";
+                triggerWaterSparkles(puffyFish);
+                return;
+            }
+
+            // Successfully heal Puffy
+            isPuffySick = false;
+            
+            // Remove sick CSS classes and apply healthy animations
+            puffyFish.classList.remove('fish-sad');
+            puffyFish.classList.add('fish-happy');
+            
+            // Transition SVG visuals dynamically!
+            bodySvg.setAttribute('fill', '#FFC6FF'); // Translucent Glowing Neon Pink!
+            tailSvg.setAttribute('fill', '#9BF6FF'); // Beautiful Aqua tentacles
+            
+            eyesSick.setAttribute('display', 'none');
+            eyesHappy.removeAttribute('display');
+            
+            mouthSad.setAttribute('display', 'none');
+            mouthHappy.removeAttribute('display');
+
+            statusEl.textContent = "Status: Glowing & Sparkling! 😊🌸";
+            statusEl.className = "absolute top-4 bg-mintGreen border-2 border-cozyDark rounded-full px-4 py-1 text-xs md:text-sm font-bold shadow-[2px_2px_0px_var(--cozy-dark)] z-30 animate-pulse";
+            
+            fbEl.textContent = "✨ Hurrah! Aurelia was nursed back to health! See how beautifully she sparkles?";
+            triggerWaterSparkles(puffyFish);
+        }
+
+        function triggerWaterSparkles(sourceElement) {
+            const tank = document.getElementById('minigame-tank');
+            if(!tank) return;
+
+            const rect = sourceElement.getBoundingClientRect();
+            const tankRect = tank.getBoundingClientRect();
+            const relativeX = rect.left - tankRect.left + rect.width/2;
+            const relativeY = rect.top - tankRect.top + rect.height/2;
+
+            for(let i = 0; i < 15; i++) {
+                const star = document.createElement('div');
+                star.className = 'decor-burst';
+                star.textContent = Math.random() > 0.4 ? '💖' : '✨';
+                star.style.left = `${relativeX}px`;
+                star.style.top = `${relativeY}px`;
+                star.style.position = 'absolute';
+                star.style.transition = 'all 0.8s cubic-bezier(0.1, 0.8, 0.3, 1)';
+                
+                tank.appendChild(star);
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 110 + 40;
+                const tx = Math.cos(angle) * distance;
+                const ty = Math.sin(angle) * distance;
+
+                setTimeout(() => {
+                    star.style.transform = `translate(${tx}px, ${ty}px) scale(1.6)`;
+                    star.style.opacity = '0';
+                }, 20);
+
+                setTimeout(() => star.remove(), 1000);
+            }
+        }
+
+
+        // ================= DRAG, DROP, AND ELEMENT RESIZING ENGINE =================
+        const playgroundTank = document.getElementById('playground-tank');
+        const emptyState = document.getElementById('tank-empty-state');
+        
+        let activeDragElement = null;
+        let selectedElement = null;
+        let startX, startY;
+        let startLeft, startTop;
+
+        // Click on tank background to deselect currently selected decoration
+        playgroundTank.addEventListener('mousedown', (e) => {
+            if (e.target === playgroundTank) {
+                deselectAll();
+            }
+        });
+        playgroundTank.addEventListener('touchstart', (e) => {
+            if (e.target === playgroundTank) {
+                deselectAll();
+            }
+        }, { passive: true });
+
+        function selectElement(el) {
+            deselectAll();
+            selectedElement = el;
+            selectedElement.classList.add('decor-selected');
+        }
+
+        function deselectAll() {
+            const items = playgroundTank.querySelectorAll('.spawned-decor');
+            items.forEach(item => item.classList.remove('decor-selected'));
+            selectedElement = null;
+        }
+
+        // Direct resizing function for selected ornament
+        function resizeSelected(direction) {
+            if (!selectedElement) {
+                alert("✨ Click on an item inside the aquarium first to select it!");
+                return;
+            }
+            // Read active font-size in pixels and resize
+            let currentSize = parseFloat(window.getComputedStyle(selectedElement).fontSize);
+            if (direction === 'bigger') {
+                currentSize = Math.min(110, currentSize + 10);
+            } else {
+                currentSize = Math.max(20, currentSize - 10);
+            }
+            selectedElement.style.fontSize = `${currentSize}px`;
+        }
+
+        function makeElementDraggable(el) {
+            el.style.position = 'absolute';
+
+            const onStart = (e) => {
+                // Select element on interaction
+                selectElement(el);
+                
+                activeDragElement = el;
+                el.style.zIndex = '500'; // Push currently dragged item to the front of visual layers
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                startX = clientX;
+                startY = clientY;
+                
+                startLeft = parseFloat(el.style.left) || 0;
+                startTop = parseFloat(el.style.top) || 0;
+                
+                document.addEventListener('mousemove', onMove, { passive: false });
+                document.addEventListener('mouseup', onEnd);
+                document.addEventListener('touchmove', onMove, { passive: false });
+                document.addEventListener('touchend', onEnd);
+                
+                e.stopPropagation();
+            };
+
+            const onMove = (e) => {
+                if (!activeDragElement) return;
+                
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                
+                const dx = clientX - startX;
+                const dy = clientY - startY;
+                
+                let newLeft = startLeft + dx;
+                let newTop = startTop + dy;
+                
+                // Set absolute boundaries to constrain all elements within the physical fish tank limits
+                const tankWidth = playgroundTank.clientWidth;
+                const tankHeight = playgroundTank.clientHeight;
+                const elWidth = el.offsetWidth || 50;
+                const elHeight = el.offsetHeight || 50;
+                
+                if (newLeft < 5) newLeft = 5;
+                if (newLeft > tankWidth - elWidth - 5) newLeft = tankWidth - elWidth - 5;
+                if (newTop < 5) newTop = 5;
+                // Allow resting flatly on sandy floor, but not underneath the layout
+                if (newTop > tankHeight - elHeight - 10) newTop = tankHeight - elHeight - 10;
+                
+                el.style.left = `${newLeft}px`;
+                el.style.top = `${newTop}px`;
+                
+                e.preventDefault();
+            };
+
+            const onEnd = () => {
+                if (activeDragElement) {
+                    activeDragElement.style.zIndex = '100'; // Return back to active sandbox layers
+                    activeDragElement = null;
+                }
+                document.removeEventListener('mousemove', onMove);
+                document.removeEventListener('mouseup', onEnd);
+                document.removeEventListener('touchmove', onMove);
+                document.removeEventListener('touchend', onEnd);
+            };
+
+            el.addEventListener('mousedown', onStart);
+            el.addEventListener('touchstart', onStart, { passive: false });
+        }
+
+        // SWIMMING ENGINE FOR PETS & ORNAMENTS (FIXED REVERSED TRANSFORMS)
+        function spawnDecor(emojiSymbol, name, isFish = false) {
+            // Remove empty helper status
+            if(emptyState) {
+                emptyState.style.display = 'none';
+            }
+
+            const decorElement = document.createElement('div');
+            decorElement.className = 'spawned-decor';
+            decorElement.textContent = emojiSymbol;
+            decorElement.title = `Double-click to remove ${name}!`;
+
+            const tankWidth = playgroundTank.clientWidth;
+            const tankHeight = playgroundTank.clientHeight;
+
+            // Compute ideal layout distribution for spawned items
+            const randomX = Math.random() * (tankWidth - 70) + 15;
+            let randomY;
+            if(emojiSymbol === '🏰' || emojiSymbol === '🧜‍♀️') {
+                randomY = tankHeight - 85; // Fixed on sandy beds
+            } else if(emojiSymbol === '🪸') {
+                randomY = tankHeight - 80; // Sunk coral
+            } else {
+                randomY = Math.random() * (tankHeight - 160) + 60; // Floating items
+            }
+
+            decorElement.style.left = `${randomX}px`;
+            decorElement.style.top = `${randomY}px`;
+            
+            // Set element rotation strictly straight (0 degrees) as requested!
+            decorElement.style.transform = `rotate(0deg)`;
+
+            // Event listener to delete the decor item on double-click
+            decorElement.ondblclick = function(e) {
+                e.stopPropagation();
+                
+                // Burst effects
+                const burst = document.createElement('div');
+                burst.className = 'decor-burst';
+                burst.textContent = '🫧';
+                burst.style.left = `${decorElement.offsetLeft + 10}px`;
+                burst.style.top = `${decorElement.offsetTop + 10}px`;
+                playgroundTank.appendChild(burst);
+
+                setTimeout(() => burst.remove(), 400);
+                decorElement.remove();
+
+                // Restore helper warning if nothing remains inside
+                const remaining = playgroundTank.querySelectorAll('.spawned-decor');
+                if(remaining.length === 0 && emptyState) {
+                    emptyState.style.display = 'flex';
+                }
+            };
+
+            playgroundTank.appendChild(decorElement);
+            makeElementDraggable(decorElement);
+            selectElement(decorElement);
+
+            // Swimming Logic (Fishes float and swim horizontally inside the tank!)
+            if (isFish) {
+                decorElement.dataset.swimming = "true";
+                decorElement.style.transition = "none"; // Disable CSS transition for smooth animation frame updates
+                
+                // Initialize velocity
+                let speedX = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 0.8 + 0.6); 
+                
+                // FIXED SWIMMING FACE DIRECTIONS:
+                // Default Unicode emoji "🐠" faces LEFT.
+                // - To swim left (speedX < 0), we keep it normal scaleX(1).
+                // - To swim right (speedX > 0), we flip it scaleX(-1) to point right!
+                decorElement.style.transform = speedX > 0 ? 'scaleX(-1)' : 'scaleX(1)';
+
+                function swimLoop() {
+                    if (!decorElement.parentNode) return; // Fish has been deleted
+                    
+                    // Pause swimming while dragging
+                    if (activeDragElement === decorElement) {
+                        requestAnimationFrame(swimLoop);
+                        return;
+                    }
+
+                    let curLeft = parseFloat(decorElement.style.left) || 0;
+                    let newLeft = curLeft + speedX;
+                    const tankW = playgroundTank.clientWidth;
+                    const elW = decorElement.offsetWidth || 45;
+
+                    if (newLeft <= 5) {
+                        newLeft = 5;
+                        speedX = -speedX;
+                        // Flipped right
+                        decorElement.style.transform = 'scaleX(-1)'; 
+                    } else if (newLeft >= tankW - elW - 5) {
+                        newLeft = tankW - elW - 5;
+                        speedX = -speedX;
+                        // Facing left normal
+                        decorElement.style.transform = 'scaleX(1)'; 
+                    }
+
+                    decorElement.style.left = `${newLeft}px`;
+                    requestAnimationFrame(swimLoop);
+                }
+                
+                setTimeout(() => {
+                    requestAnimationFrame(swimLoop);
+                }, 100);
+            }
+        }
+
+        function clearDecorTank() {
+            const activeDecors = playgroundTank.querySelectorAll('.spawned-decor');
+            activeDecors.forEach(decor => decor.remove());
+            deselectAll();
+            if(emptyState) {
+                emptyState.style.display = 'flex';
+            }
+        }
+
+
+        // ================= INTERACTIVE LORE STICKER BOOK ENGINE =================
+        const stickerDatabase = {
+            clown: {
+                emoji: "🐠",
+                name: "Clownfish (Pastel Breeze)",
+                rarity: "Rarity: Common ✨",
+                desc: "An incredibly bouncy and bubbly reef swimmer. They love weaving through sea anemones. Their extra-active nature helps oxygenate local tide waters!",
+                diet: "Crispy Sponge Crumbs",
+                recovery: "+15% Local Glow"
+            },
+            strawberry: {
+                emoji: "🐙",
+                name: "Strawberry Octopus",
+                rarity: "Rarity: Rare 🍓",
+                desc: "This shy little sweetie turns a deep, beautiful red when fed delicious treats. It loves sticking to sparkly gems and hiding from noisy visitors.",
+                diet: "Glittering Kelp Pods",
+                recovery: "+25% Pink Coral Depth"
+            },
+            puffer: {
+                emoji: "🪼",
+                name: "Aurelia (Glowing Jelly)",
+                rarity: "Rarity: Legendary 🌟",
+                desc: "Glows with a soft, pulsing violet aura. Watching them float is therapeutic for both visitors and other marine patients in the sanctuary.",
+                diet: "Star-dust Plankton",
+                recovery: "+30% Bioluminescence"
+            },
+            jelly: {
+                emoji: "🐡",
+                name: "Pufferfish (Puffy)",
+                rarity: "Rarity: Iconic 👑",
+                desc: "Easily flustered but incredibly loving. When happy, Puffy floats along with soft sparkles. He helps trigger magical, bioluminescent reef reactions!",
+                diet: "Sea-Salm Butter",
+                recovery: "+40% Reef Brilliance"
+            }
+        };
+
+        function peelSticker(typeKey, element) {
+            // Remove sticker active styles from all siblings
+            const allSlots = document.querySelectorAll('.sticker-slot');
+            allSlots.forEach(slot => slot.classList.remove('sticker-active'));
+
+            // Highlight the clicked sticker
+            element.classList.add('sticker-active');
+
+            const card = document.getElementById('sticker-details-card');
+            const targetData = stickerDatabase[typeKey];
+
+            if(card && targetData) {
+                // Load details dynamically
+                document.getElementById('sticker-display-emoji').textContent = targetData.emoji;
+                document.getElementById('sticker-display-name').textContent = targetData.name;
+                document.getElementById('sticker-display-rarity').textContent = targetData.rarity;
+                document.getElementById('sticker-display-desc').textContent = targetData.desc;
+                document.getElementById('sticker-display-diet').textContent = targetData.diet;
+                document.getElementById('sticker-display-recovery').textContent = targetData.recovery;
+
+                // Make card visible with sweet transition slide
+                card.classList.remove('hidden');
+                card.style.animation = 'bounceIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards';
+            }
+        }
+
+
+        // NEWSLETTER HANDLER
+        function handleSubscribe(e) {
+            e.preventDefault();
+            const successText = document.getElementById('subscription-success');
+            const emailInput = document.getElementById('subscriber-email');
+            
+            if(successText && emailInput) {
+                successText.classList.remove('hidden');
+                emailInput.value = '';
+                setTimeout(() => {
+                    successText.classList.add('hidden');
+                }, 6000);
+            }
+        }
+
+        // STARTUP ROUTINE
+        window.onload = function() {
+            generateBackgroundBubbles();
+            startTankBubbleStreams('minigame-tank');
+            startTankBubbleStreams('playground-tank');
+        }
+    </script>
 </body>
 </html>
