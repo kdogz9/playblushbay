@@ -4,51 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blush Bay: Ocean Rescue | Aquarium Management Sim</title>
-    <!-- Google Fonts: Cute, rounded font for that girly pop vibe -->
+    <!-- Google Fonts: Pixelify Sans for that perfect girly pop pixel art look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
     <!-- Tailwind CSS for modern responsive styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Fredoka', sans-serif;
+            font-family: 'Pixelify Sans', sans-serif;
             background: linear-gradient(180deg, #FFF0F5 0%, #E6E6FA 50%, #E0F2FE 100%);
+            image-rendering: pixelated; /* Ensures any pixel art you add stays sharp */
         }
         /* Soft, bouncy animation for standard buttons */
         .btn-bounce {
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.15s steps(4), box-shadow 0.15s steps(4);
         }
         .btn-bounce:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 0px 0px rgba(244, 63, 94, 0.3);
         }
         /* Custom scrollbar to match the pastel aesthetic */
         ::-webkit-scrollbar {
-            width: 8px;
+            width: 10px;
         }
         ::-webkit-scrollbar-track {
             background: #FFF0F5;
         }
         ::-webkit-scrollbar-thumb {
             background: #F472B6;
-            border-radius: 9999px;
+            border: 2px solid #FFF0F5;
         }
     </style>
 </head>
-<body class="text-slate-700 dynamic-island-ready selection:bg-pink-200">
+<body class="text-slate-700 selection:bg-pink-200 antialiased">
 
     <!-- Header / Navigation -->
     <header class="p-6 max-w-7xl mx-auto flex justify-between items-center">
         <div class="text-2xl font-bold text-pink-500 tracking-wide flex items-center gap-2">
             🫧 Blush Bay
         </div>
-        <nav class="hidden md:flex gap-8 text-lg font-medium text-pink-600/80">
+        <nav class="hidden md:flex gap-8 text-xl font-medium text-pink-600/80">
             <a href="#about" class="hover:text-pink-500 transition">About</a>
             <a href="#features" class="hover:text-pink-500 transition">Features</a>
             <a href="#gameplay" class="hover:text-pink-500 transition">Gameplay</a>
         </nav>
-        <a href="#newsletter" class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-2 rounded-full font-semibold text-sm shadow-md transition btn-bounce">
+        <a href="#newsletter" class="bg-pink-400 hover:bg-pink-500 text-white px-5 py-2 border-b-4 border-pink-600 font-semibold text-base transition btn-bounce">
             Stay Updated!
         </a>
     </header>
@@ -59,34 +60,34 @@
         <div class="absolute top-10 left-4 text-4xl opacity-40 animate-bounce">✨</div>
         <div class="absolute bottom-10 right-4 text-4xl opacity-40 animate-bounce" style="animation-delay: 0.5s;">🐠</div>
         
-        <span class="bg-pink-100 text-pink-600 font-semibold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider inline-block mb-4 shadow-sm border border-pink-200">
-            Coming Soon to PC & Cozy Platforms
+        <span class="bg-pink-100 text-pink-600 font-bold px-4 py-1.5 inline-block mb-6 border-2 border-pink-300">
+            [ Coming Soon to PC & Cozy Platforms ]
         </span>
         
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 drop-shadow-sm mb-6">
+        <h1 class="text-4xl md:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-sky-500 drop-shadow-sm mb-6">
             Blush Bay: Ocean Rescue
         </h1>
         
-        <p class="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto mb-8 tracking-wide">
             A pastel, top-down 2D aquarium management sim. Rescue injured marine life, curate specialized treatment tanks, harvest lab-grown food, and build your dream pink aquarium sanctuary!
         </p>
 
         <!-- Mockup Game Trailer / Image Container -->
-        <div class="max-w-3xl mx-auto rounded-3xl overflow-hidden shadow-2xl border-8 border-white bg-slate-800 aspect-video relative group">
+        <div class="max-w-3xl mx-auto border-4 border-black bg-slate-800 aspect-video relative shadow-[8px_8px_0px_0px_rgba(244,114,182,0.4)]">
             <!-- Replace the source below with your actual gameplay trailer or screenshot later! -->
             <div class="absolute inset-0 bg-gradient-to-tr from-pink-300 to-sky-300 opacity-90 flex flex-col justify-center items-center p-8 text-center">
                 <span class="text-6xl mb-4">⚓</span>
-                <h3 class="text-2xl font-bold text-white mb-2">Your Gameplay Trailer Here</h3>
-                <p class="text-white/80 max-w-md text-sm">Add a YouTube link or drop a gorgeous 2D pixel art screenshot right in this block!</p>
+                <h3 class="text-2xl font-bold text-white mb-2">&lt; Your Gameplay Trailer Here &gt;</h3>
+                <p class="text-white/95 max-w-md text-base">Add a YouTube link or drop a gorgeous 2D pixel art screenshot right in this block!</p>
             </div>
         </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="bg-white/60 backdrop-blur-md py-16 border-y border-pink-100">
+    <section id="about" class="bg-white/60 py-16 border-y-4 border-pink-200">
         <div class="max-w-4xl mx-auto px-6 text-center">
             <h2 class="text-3xl font-bold text-purple-600 mb-4">Heal the Ocean, One Bubble at a Time</h2>
-            <p class="text-slate-600 leading-relaxed text-lg">
+            <p class="text-slate-600 text-lg tracking-wide leading-relaxed">
                 In <strong class="text-pink-500">Blush Bay</strong>, you run a rehabilitation center for sea creatures. From clicking bubbles in mini-games to rescue stray fish, to configuring delicate water stats in your custom tanks, every choice helps nurse your patients back to health. Once they're strong enough, release them back into the wild to make room for more rescues!
             </p>
         </div>
@@ -94,32 +95,32 @@
 
     <!-- Features Grid -->
     <section id="features" class="max-w-6xl mx-auto px-6 py-20">
-        <h2 class="text-3xl font-bold text-center text-sky-600 mb-12">Aquarium Management Loops</h2>
+        <h2 class="text-3xl font-bold text-center text-sky-600 mb-12">=== Aquarium Management Loops ===</h2>
         
         <div class="grid md:grid-cols-3 gap-8">
             <!-- Feature 1 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-purple-100 hover:shadow-md transition">
+            <div class="bg-white p-6 border-4 border-purple-200 shadow-[6px_6px_0px_0px_rgba(168,85,247,0.2)]">
                 <div class="text-3xl mb-4">🫧</div>
                 <h3 class="text-xl font-bold text-purple-500 mb-2">Bubble Mini-Games</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <p class="text-slate-600 text-base leading-relaxed">
                     Spot hurt sea life out in the wild! Pop the rescue bubbles in fast-paced mini-games to carefully secure them and bring them back to safety.
                 </p>
             </div>
 
             <!-- Feature 2 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-pink-100 hover:shadow-md transition">
+            <div class="bg-white p-6 border-4 border-pink-200 shadow-[6px_6px_0px_0px_rgba(236,72,153,0.2)]">
                 <div class="text-3xl mb-4">🧪</div>
                 <h3 class="text-xl font-bold text-pink-500 mb-2">Lab-Grown Nutrition</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <p class="text-slate-600 text-base leading-relaxed">
                     Cultivate specialized ingredients inside your research lab. Feed them into your processing machines to manufacture custom diets for sick fish.
                 </p>
             </div>
 
             <!-- Feature 3 -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-sky-100 hover:shadow-md transition">
+            <div class="bg-white p-6 border-4 border-sky-200 shadow-[6px_6px_0px_0px_rgba(14,165,233,0.2)]">
                 <div class="text-3xl mb-4">🎀</div>
                 <h3 class="text-xl font-bold text-sky-500 mb-2">Decorate & Expand</h3>
-                <p class="text-slate-600 text-sm leading-relaxed">
+                <p class="text-slate-600 text-base leading-relaxed">
                     Earn sweet donations from impressed aquarium visitors. Spend your funds on buying premium tanks, pastel furniture, and cute aesthetic props.
                 </p>
             </div>
@@ -127,20 +128,20 @@
     </section>
 
     <!-- Gameplay Deep Dive -->
-    <section id="gameplay" class="bg-sky-50/50 py-16">
+    <section id="gameplay" class="bg-sky-50/70 py-16 border-t-4 border-sky-200">
         <div class="max-w-5xl mx-auto px-6">
             <h2 class="text-3xl font-bold text-center text-slate-800 mb-12">The Healing Cycle</h2>
             
             <div class="space-y-12">
                 <!-- Step 1 -->
                 <div class="flex flex-col md:flex-row items-center gap-8">
-                    <div class="w-full md:w-1/2 bg-pink-100 rounded-2xl aspect-[4/3] flex items-center justify-center text-4xl shadow-inner border border-pink-200">
-                        🐠 Stat Management
+                    <div class="w-full md:w-1/2 bg-pink-100 aspect-[4/3] flex items-center justify-center text-2xl border-4 border-pink-300 shadow-inner">
+                        [ 🐠 Stat Management ]
                     </div>
                     <div class="w-full md:w-1/2">
-                        <span class="text-pink-400 font-bold text-sm uppercase tracking-wider">Step 01</span>
+                        <span class="text-pink-400 font-bold text-base uppercase tracking-wider">&gt;&gt; Step 01</span>
                         <h3 class="text-2xl font-bold text-slate-800 mt-1 mb-3">Stabilize Your Patient</h3>
-                        <p class="text-slate-600 leading-relaxed">
+                        <p class="text-slate-600 text-base leading-relaxed">
                             Every creature rescued has distinct medical stats. Keep their tanks perfectly configured to their biological needs. Trigger healing mini-games to directly treat wounds and infections.
                         </p>
                     </div>
@@ -148,13 +149,13 @@
 
                 <!-- Step 2 -->
                 <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-                    <div class="w-full md:w-1/2 bg-purple-100 rounded-2xl aspect-[4/3] flex items-center justify-center text-4xl shadow-inner border border-purple-200">
-                        🤝 Donation Economy
+                    <div class="w-full md:w-1/2 bg-purple-100 aspect-[4/3] flex items-center justify-center text-2xl border-4 border-purple-300 shadow-inner">
+                        [ 🤝 Donation Economy ]
                     </div>
                     <div class="w-full md:w-1/2">
-                        <span class="text-purple-400 font-bold text-sm uppercase tracking-wider">Step 02</span>
+                        <span class="text-purple-400 font-bold text-base uppercase tracking-wider">&gt;&gt; Step 02</span>
                         <h3 class="text-2xl font-bold text-slate-800 mt-1 mb-3">Earn Visitor Donations</h3>
-                        <p class="text-slate-600 leading-relaxed">
+                        <p class="text-slate-600 text-base leading-relaxed">
                             As your aquarium gets healthier and prettier, guests will explore your facilities. Happy visitors drop donations based on the overall quality, decoration level, and medical standards of your sanctuary.
                         </p>
                     </div>
@@ -165,24 +166,24 @@
 
     <!-- Newsletter / Footer -->
     <section id="newsletter" class="max-w-4xl mx-auto px-6 py-20 text-center">
-        <div class="bg-gradient-to-br from-pink-400 to-purple-400 rounded-3xl p-8 md:p-12 text-white shadow-xl relative overflow-hidden">
+        <div class="bg-gradient-to-br from-pink-400 to-purple-400 border-4 border-white p-8 md:p-12 text-white shadow-[12px_12px_0px_0px_rgba(236,72,153,0.3)] relative overflow-hidden">
             <div class="absolute -right-10 -bottom-10 text-9xl opacity-10 pointer-events-none">🐳</div>
             
             <h2 class="text-3xl font-bold mb-3">Follow the Development Journey!</h2>
-            <p class="text-white/90 max-w-md mx-auto mb-6 text-sm">
+            <p class="text-white/95 max-w-md mx-auto mb-6 text-base">
                 Get notified when the closed alpha starts, and get exclusive peeks at our pixel art assets and devlogs.
             </p>
             
-            <form class="flex flex-col sm:flex-row gap-2 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Yay! Thanks for subscribing to Blush Bay updates! 🫧');">
-                <input type="email" placeholder="your.cozy.email@gmail.com" required class="px-5 py-3 rounded-full text-slate-800 flex-grow focus:outline-none focus:ring-2 focus:ring-pink-300 placeholder:text-slate-400 text-sm" />
-                <button type="submit" class="bg-white text-pink-500 font-bold px-6 py-3 rounded-full hover:bg-pink-50 text-sm transition btn-bounce shadow-md">
+            <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Yay! Thanks for subscribing to Blush Bay updates! 🫧');">
+                <input type="email" placeholder="your.cozy.email@gmail.com" required class="px-5 py-3 border-2 border-pink-300 text-slate-800 flex-grow focus:outline-none placeholder:text-slate-400 text-base" />
+                <button type="submit" class="bg-white text-pink-500 font-bold px-6 py-3 border-b-4 border-slate-300 hover:bg-pink-50 text-base transition btn-bounce">
                     Join Newsletter
                 </button>
             </form>
         </div>
     </section>
 
-    <footer class="text-center pb-8 text-xs text-slate-400 font-medium">
+    <footer class="text-center pb-8 text-sm text-slate-400 font-medium">
         &copy; 2026 Blush Bay: Ocean Rescue. Built with 💖 for cozy gamers.
     </footer>
 
